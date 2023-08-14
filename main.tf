@@ -6,6 +6,7 @@ terraform {
     }
   }
 }
+
 provider "azurerm"{
 features {}
 skip_provider_registration = "true"
@@ -58,14 +59,12 @@ resource "azurerm_public_ip" "example" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   allocation_method   = "Static"
-
 }
 
 resource "azurerm_network_interface" "main" {
   name                = "vnet-nic"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
-
   ip_configuration {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
@@ -73,10 +72,6 @@ resource "azurerm_network_interface" "main" {
     public_ip_address_id = azurerm_public_ip.example.id
   }
 }
-
-
-
-
 resource "azurerm_virtual_machine" "main" {
   name                  = "test-vm"
   location              = azurerm_resource_group.example.location
@@ -110,4 +105,3 @@ resource "azurerm_virtual_machine" "main" {
     environment = "staging"
   }
 }
-
