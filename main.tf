@@ -15,7 +15,7 @@ client_id = ""
 client_secret=""
 }
 
-#Creating Resource Group
+#Creating Resource Group name - test-rg-2
 resource "azurerm_resource_group" "rg" {
     name="test-rg-2"
     location = "EastUS"
