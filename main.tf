@@ -16,7 +16,7 @@ client_secret="szF8Q~xjzDW2_IFD0yyaOZE_SjkvX8TysLW86c8T"
 }
 
 resource "azurerm_resource_group" "rg" {
-    name="test-rg-1"
+    name="test-rg-2"
     location = "EastUS"
   
 }
