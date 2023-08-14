@@ -16,6 +16,7 @@ client_secret="szF8Q~xjzDW2_IFD0yyaOZE_SjkvX8TysLW86c8T"
 }
 
 #first we will create a new Resource Group
+#changes made to prerna branch
 
 resource "azurerm_resource_group" "rg" {
     name="test-rg-2"
