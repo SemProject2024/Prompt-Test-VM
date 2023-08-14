@@ -15,9 +15,7 @@ client_id = "9e46e6ee-df6f-438d-bf40-6dbfa737777c"
 client_secret="szF8Q~xjzDW2_IFD0yyaOZE_SjkvX8TysLW86c8T"
 }
 
-#first we will create a new Resource Group
-#New Changes
-
+#Creating Resource Group
 resource "azurerm_resource_group" "rg" {
     name="test-rg-2"
     location = "EastUS"
