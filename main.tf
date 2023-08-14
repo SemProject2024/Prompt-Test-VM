@@ -111,13 +111,3 @@ resource "azurerm_virtual_machine" "main" {
   }
 }
 
-# b069c648-c709-4e10-9a16-2cd751bb5b8c
-# You12:31
-# az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/b069c648-c709-4e10-9a16-2cd751bb5b8c"
-# Prerna Patnaik12:32
-# {
-#   "appId": "8baf4647-0555-4c98-b247-92ef2b2ec8f5",
-#   "displayName": "azure-cli-2023-08-14-07-01-38",
-#   "password": "C4q8Q~MxCPhbez5p2Q4lvAg_KwFkzeAAfseCWdpN",
-#   "tenant": "f2a009da-b491-4dbb-94e8-5809162549cd"
-# }
