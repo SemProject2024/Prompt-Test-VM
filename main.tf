@@ -105,3 +105,8 @@ resource "azurerm_virtual_machine" "main" {
     environment = "staging"
   }
 }
+
+output "ip_address" {
+  value = azurerm_public_ip.example.ip_address
+  
+}
