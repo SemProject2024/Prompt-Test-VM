@@ -110,7 +110,12 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     environment = "staging"
   }
-}"""
+}
+output "ip_address" {
+  value = azurerm_public_ip.example.ip_address
+  
+}
+"""
 
 import ssh_key_based
 ssh_key_based.run(template=template)
