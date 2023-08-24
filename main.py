@@ -1,4 +1,4 @@
-terraform {
+template = """terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -6,15 +6,15 @@ terraform {
     }
   }
 }
-
 provider "azurerm"{
 features {}
 skip_provider_registration = "true"
-subscription_id = ""
-tenant_id = ""
-client_id = ""
-client_secret=""
+subscription_id = "72a851c4-6ce9-4328-902a-1b4f3e431554"
+tenant_id = "f2a009da-b491-4dbb-94e8-5809162549cd"
+client_id = "9e46e6ee-df6f-438d-bf40-6dbfa737777c"
+client_secret="szF8Q~xjzDW2_IFD0yyaOZE_SjkvX8TysLW86c8T"
 }
+
 
 resource "azurerm_resource_group" "example" {
     name="test-rg-2"
@@ -59,12 +59,14 @@ resource "azurerm_public_ip" "example" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   allocation_method   = "Static"
+
 }
 
 resource "azurerm_network_interface" "main" {
   name                = "vnet-nic"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
+
   ip_configuration {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.internal.id
@@ -72,8 +74,12 @@ resource "azurerm_network_interface" "main" {
     public_ip_address_id = azurerm_public_ip.example.id
   }
 }
+
+
+
+
 resource "azurerm_virtual_machine" "main" {
-  name                  = "test-vm"
+  name                  = "test-vm1"
   location              = azurerm_resource_group.example.location
   resource_group_name   = azurerm_resource_group.example.name
   network_interface_ids = [azurerm_network_interface.main.id]
@@ -104,9 +110,7 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     environment = "staging"
   }
-}
+}"""
 
-output "ip_address" {
-  value = azurerm_public_ip.example.ip_address
-  
-}
+import ssh_key_based
+ssh_key_based.run(template=template)
