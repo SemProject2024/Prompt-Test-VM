@@ -26,6 +26,13 @@ def run(template):
         stdin, stdout, stderr = ssh_client.exec_command("terraform plan")
         print("Executing terraform plan")
         output = stdout.read().decode("utf-8")
+        # stdin, stdout, stderr = ssh_client.exec_command("terraform apply -auto-approve")
+        # print("Executing terraform apply")
+        # output = stdout.read().decode("utf-8")
+        # print(output)
+        # stdin, stdout, stderr = ssh_client.exec_command("terraform output")
+        # print("Getting output variables")
+        # output = stdout.read().decode("utf-8")
         print(output)
         
         # Execute commands or perform operations on the VM if needed
