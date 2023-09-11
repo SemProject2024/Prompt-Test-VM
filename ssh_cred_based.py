@@ -1,7 +1,7 @@
 import paramiko
 
 # VM information
-host = '172.174.41.118'
+host = '20.121.4.16'
 port = 22
 username = 'azureuser'
 password = 'P@ssword!123'
@@ -17,7 +17,7 @@ try:
     ssh_client.connect(host, port=port, username=username, password=password)
     
     # Execute a command on the VM (for example, listing files in the home directory)
-    stdin, stdout, stderr = ssh_client.exec_command('echo "hello" > hi.txt')
+    stdin, stdout, stderr = ssh_client.exec_command('echo "hello" > hello.txt')
     stdin, stdout, stderr = ssh_client.exec_command('ls')
     
     # Print the command output
