@@ -23,12 +23,27 @@ def run(template):
         stdin, stdout, stderr = ssh_client.exec_command("terraform init")
         output = stdout.read().decode("utf-8")
         print("Executed terraform init")
-        stdin, stdout, stderr = ssh_client.exec_command("terraform plan")
+        stdin, stdout, stderr = ssh_client.exec_command("terraform plan -lock=false")
         print("Executing terraform plan")
         output = stdout.read().decode("utf-8")
         print(output)
+        # stdin, stdout, stderr = ssh_client.exec_command("terraform apply -auto-approve")
+        # print("Executing terraform apply")
+        # output = stdout.read().decode("utf-8")
+        # print(output)
+        # stdin, stdout, stderr = ssh_client.exec_command("terraform output")
+        # print("Getting output variables")
+        # output = stdout.read().decode("utf-8")
+        # print(output)
         
-        # Execute commands or perform operations on the VM if needed
+        # # Execute commands or perform operations on the VM if needed
+        
+        
+        # #DESTROYING RESOURCES
+        # stdin, stdout, stderr = ssh_client.exec_command("terraform destroy -auto-approve")
+        # print("Executing terraform destroy")
+        # output = stdout.read().decode("utf-8")
+        # print(output)
         
         ssh_client.close()
         print("SSH connection closed")
