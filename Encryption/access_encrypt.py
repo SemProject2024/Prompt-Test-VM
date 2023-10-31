@@ -1,5 +1,7 @@
 import encrypt
-message = input("Enter message: ")
-
-enc = encrypt.encrypt('normal-message',message)
-print(encrypt.decrypt('normal-message',enc))
+message = "This is some sample text"
+key = 'normal-message1'
+enc = encrypt.encrypt(key,message)
+dec = encrypt.decrypt(key,enc)
+if message == dec :
+    print('both are equal')
