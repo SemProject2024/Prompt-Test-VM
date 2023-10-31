@@ -5,7 +5,6 @@ def encrypt(key,input):
     key = keygen(key)
     message = input
     fernet = Fernet(key)
-    print("key is ",key)
     encMessage = fernet.encrypt(message.encode())
     print("original string: ", message)
     print("encrypted string: ", encMessage)
@@ -19,17 +18,16 @@ def decrypt(key,input):
     return decMessage
 
 def keygen(key):
+
     import hashlib
     client=key
     result = hashlib.sha256(client.encode()) 
-    print("Result: ",result.hexdigest())
     final_hash=result.hexdigest()
     import base64
     from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     password = b"client-secret"
     salt = bytes(final_hash.encode())
-    print("salt",salt)
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         length=32,
