@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud Inf Deployment
+
+    </title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="side-bar">
+      <div class="image-container">
+        <img src="./cloud1.png" alt="Logo" width="60" height="60"  /><b>
+        <h1>
+          Cloud NLP
+        </h1>
+    </b>
+      </div>
+    
+    
+    <br>
+    <button id="about">About</button>
+    <button id="credentials">Credentials</button>
+    <button id="provisionedResources">Provisioned Resources</button>
+      <button id="newChatButton">Start a new Chat</button>
+      <div class="history"></div>
+      <br><br><br><br><br><br><br><br>
+      <button id="signOut">Signout</button>
+      <nav>
+        <p>Cloud Infrastructure Deployment</p>
+      </nav>
+    </section>
+    <section class="about">
+      
+        <p>Cloud Computing is a very powerful tool, which can be used in a variety of facets ranging from simple storage solutions to developing complex pipelines to make the application available publicly. There are multiple cloud service providers out of which the prominent ones are Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP). It is quite common for enterprises to leverage the capabilities of clouds. Cloud Infrastructure deployment from the management console is time consuming and involves plenty of redundant tasks. </p>
+        <br>
+        <p>This project mainly aims at simplifying the interaction with the cloud. It is based on Natural Language Processing, which can process the prompts provided by the user, and deploy the cloud resources on demand. This project will be in the form of a web application which can be accessed from anywhere using a public endpoint. Prompts given by the user will be processed in an NLP Pipeline. Terraform, which is an IaC (Infrastructure-as-Code) tool will be used to compile various dependencies which will cater the user requirement in terms of the cloud infrastructure. The compiled Terraform code will be executed in a remote Virtual Machine using Secure Shell (SSH) protocol which will deploy the cloud resources. The provisioned resources will be reflected in the user’s account by fetching the resource details from cloud service provider. The project is mainly going to support the deployment of cloud resources on Microsoft Azure platform.</p>
+        <p>To summarise, the project’s main focus is to ease the process and save the user’s time while deploying cloud resources, by leveraging the capabilities of Natural Language Processing and Iac Tools.</p>
+        
+    </section>
+    <script src="routing.js"></script>
+  </body>
+</html>
