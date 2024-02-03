@@ -1,0 +1,13 @@
+In this there are 3 csv files
+
+1. resource-group- use append mode to add terraform codes into this
+2. Shuffle-Resource-Groups - shuffle the records here
+3. Resource-groups not really rewquired
+
+
+
+understand the code
+
+here we randomly populate some variables.. Use the variables to place the values in 
+1. Prompt
+2. Code
