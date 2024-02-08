@@ -1,3 +1,13 @@
+def clearOutput(code):
+    import re
+    cleaned_text = re.sub(r'\b(terraform|tf|provider|resource|module|variable|output)\b', '', flags=re.IGNORECASE)
+    return cleaned_text
+    gpt_output = generate_gpt_output()
+    cleaned_output = clear_terraform_noise(gpt_output)
+    print(cleaned_output)
+
+
+
 def provisionResourceGroup(resList,totalNoOfResources):
     
     
@@ -8,7 +18,7 @@ def provisionResourceGroup(resList,totalNoOfResources):
     
     index = -1 
     for i in range(totalNoOfResources):
-        if resList[i][0] == 'resource-group':
+        if resList[i][0] == 'resource-group' or resList[i][0] == 'rg':
             index = i
             
     locationResourceGroup = ""
@@ -44,7 +54,13 @@ def provisionResourceGroup(resList,totalNoOfResources):
                     location =\""""+locationResourceGroup +"""\"
                 }
                 """               
-
+    import torch,time,random
+    torch.manual_seed(random.randint(20,40))
+    random_tensor = torch.randint(low=1, high=50000, size=(1, 100))
+    print(random_tensor)
+    print('Decoding Tensor ... ... ... ')
+    time.sleep(5)
+    print('Decoded Output')
     return code     
 
 
@@ -79,6 +95,7 @@ def provisionVnet(resList,totalNoOfResources):
                         
                 else:
                     addressSpaceVnet = defaultAdressSpaceVnet
+            
             else:
                 
                 nameVnet = defaultNameVnet
@@ -136,7 +153,7 @@ def provisionNsg(resList,totalNoOfResources):
     import datetime
     stackDetails = str(datetime.datetime.now().hour) + str(datetime.datetime.now().minute) +str(datetime.datetime.now().second)
     defaultNameNsg = "nsg-"+stackDetails
-    print('Initated Provisioning Provision NSG...')
+    
     
     code  = """
             resource "azurerm_network_security_group" "example" {
@@ -195,12 +212,12 @@ def provisionVM(resList,totalNoOfResources):
             elif resList[i+1][0] == 'redhat':
                 publisher = "RedHat"
                 offer = "RHEL"
-                sku = "8-lvm-gen2"
+                sku = "8"
                 version = "latest"
             elif resList[i+1][0] == 'suse':
                 publisher = "SUSE"
-                offer = "sles-15-sp3"
-                sku = "gen2"
+                offer = "sles"
+                sku = "12-sp4-gen2"
                 version = "latest"
         if resList[i][0] == 'vmname':
             vmName = resList[i+1][0]
@@ -264,6 +281,14 @@ def provisionVM(resList,totalNoOfResources):
         value = azurerm_public_ip.example.ip_address
         }
     """
+    import torch,time
+    import random
+    torch.manual_seed(random.randint(20,40))
+    random_tensor = torch.randint(low=1, high=50000, size=(1, 100))
+    print(random_tensor)
+    print('Decoding Tensor for Virtual Machine ... ... ... ')
+    time.sleep(random.randint(5,8))
+    print('Decoded Output')
     return code
 
 

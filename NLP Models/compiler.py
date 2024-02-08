@@ -34,8 +34,6 @@ def custom_pos_tag(sentence, custom_tags,target_tags):
     for name in allNames:
         custom_tags[name] = "NN"
         
-    
-    
     for w in sentence:
       if w in region_names_with_spaces.keys():
         reg = region_names_with_spaces[w]
@@ -45,17 +43,25 @@ def custom_pos_tag(sentence, custom_tags,target_tags):
     pos_tags = pos_tag(tokens)
 
 
-    # Replace specific words with custom POS tags
     specific_tags = [(word, tag) for word, tag in pos_tags if tag in target_tags and word != 'name']
     pos_tags = [(word, custom_tags.get(word, tag)) for word, tag in pos_tags
                 if tag in target_tags or custom_tags.get(word, tag) in target_tags
                ]
     return pos_tags,
 
-# Example usage:
-sentence = "deploy me a resource-group name test_rg_323 in location westus vm with vmname test-vm1 with username test-user-1 and password P@ssword@12345 and vnet with name test_vnet_1 with address-space 10.0.0.0/24  and operating-system suse"
+sentence = "create a resource-group in location westus3"
+
+
+
+
+
+
+
+
+
 target_tags = ['VB', 'NN', 'NNP']
 custom_tags = {'virtual-machine': 'NN',
+               'vm':'NN',
                'virtual-network': 'NN',
                'subnet': 'NN',
                'subnetwork': 'NN',
@@ -99,8 +105,6 @@ custom_tags = {'virtual-machine': 'NN',
                
                
               }
-
-
 region_names_with_spaces = {
     'east-us': 'East US',
     'west-us': 'West US',
@@ -142,6 +146,7 @@ print(pos_tags[0])
 level = 0
 
 resources_order = {"resource-group":1,
+                   "rg":1,
                     "vnet":2,
                     "subnet":3,
                     "nsg":4,

@@ -1,10 +1,13 @@
+import ast
+
+# Define the code as a string
+code = """
 import cachegen
+
 def provisionResourceGroup(resList,totalNoOfResources):
-    
     print('Initated Provisioning Resource Group...')
     template = cachegen.provisionResourceGroup(resList,totalNoOfResources)
     return template
-
 
 def provisionVnet(resList,totalNoOfResources):
     resourceGroupTemplate = provisionResourceGroup(resList,totalNoOfResources)
@@ -13,14 +16,11 @@ def provisionVnet(resList,totalNoOfResources):
     template = resourceGroupTemplate + vNetTemplate
     return template
 
-
 def provisionSubnet(resList,totalNoOfResources):
     vNetTemplate = provisionVnet(resList,totalNoOfResources)
     subnetTemplate = cachegen.provisionSubnet(resList,totalNoOfResources)
     template = vNetTemplate + subnetTemplate
     print('Initated Provisioning Subnet...')
-    
-    
     return template
 
 def provisionNsg(resList,totalNoOfResources):
@@ -30,31 +30,26 @@ def provisionNsg(resList,totalNoOfResources):
     print('Initated Provisioning Provision NSG...')
     return template
 
-
 def provisionVM(resList,totalNoOfResources):
-    
     nsgTemplate = provisionNsg(resList,totalNoOfResources)
     vmTemplate = cachegen.provisionVM(resList,totalNoOfResources)
     template = nsgTemplate + vmTemplate
-    
     print('Initated Provisioning VM...')
-    
-    
-    
     return template
 
 def provisionPublicIp(resList,totalNoOfResources):
     template4 = provisionNsg(resList,totalNoOfResources)
     print('Initated Provisioning Public IP...')
-    
-    
-    
     return None
 
 def provisionNic(resList,totalNoOfResources):
     template5 = provisionPublicIp(resList,totalNoOfResources)
     print('Initated Provisioning NIC...')
-    
-    
-    
     return None
+"""
+
+# Parse the code into an AST
+tree = ast.parse(code)
+
+# Print the AST
+print(ast.dump(tree))
