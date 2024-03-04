@@ -1,3 +1,4 @@
+
 template = """terraform {
   required_providers {
     azurerm = {
